@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tüm Klipler - Ekip Portföy</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+  <main class="all-clips-section">
+    <h2>Tüm Kliplerimiz</h2>
+    <div class="all-clips-grid">
+      <% clips.forEach(clip => { %>
+        <div class="all-clip-card">
+          <video controls>
+            <source src="<%= clip.filePath %>" type="video/mp4" />
+            Tarayıcınız video oynatmayı desteklemiyor.
+          </video>
+          <h3 class="clip-title"><%= clip.title %></h3>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+  <%- include('partials/footer') %>
+</body>
+</html>

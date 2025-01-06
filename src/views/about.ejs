@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hakkımızda - Ekip Portföy</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- FontAwesome -->
+</head>
+<body>
+  <%- include('./partials/header') %>
+  <main>
+    <section class="about">
+      <h2>Ekip Üyelerimiz</h2>
+      <div class="team-grid">
+        <% team.forEach(member => { %>
+          <div class="team-card">
+            <img src="<%= member.imageUrl %>" alt="<%= member.name %>" />
+            <h4><%= member.name %></h4>
+            <p><%= member.role %></p>
+            <p><%= member.bio %></p>
+            <div class="social-media">
+              <% if (member.kick) { %>
+                <a href="<%= member.kick %>" target="_blank" class="social-link"><i class="fab fa-kickstarter-k"></i></a>
+              <% } %>
+              <% if (member.twitter) { %>
+                <a href="<%= member.twitter %>" target="_blank" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+              <% } %>
+              <% if (member.instagram) { %>
+                <a href="<%= member.instagram %>" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+              <% } %>
+              <% if (member.linkedin) { %>
+                <a href="<%= member.linkedin %>" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+              <% } %>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+  </main>
+  <%- include('./partials/footer') %>
+</body>
+</html>

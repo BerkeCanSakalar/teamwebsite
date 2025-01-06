@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EKİP PORTFÖY: ekibimizi yakından tanıyın. Son blog yazılarımızı keşfedin.">
+  <meta name="keywords" content="ekip portföy, blog, ekip üyeleri, kick klipler">
+  <title>Ana Sayfa - Ekip Portföy</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="about-section">
+    <div class="container">
+      <h1>Ekibimiz Hakkında</h1>
+      <p class="about-description">
+        Ekibimiz; tutku, yaratıcılık ve azimle projeler üzerinde çalışan profesyonellerden oluşmaktadır. Geliştirdiğimiz tüm projeler, 
+        kullanıcı deneyimini ön planda tutarak, etkileyici çözümler sunmayı hedefler. Ekibimiz yazılım geliştirme, tasarım ve yenilikçi 
+        fikirlerde geniş bir yelpazede deneyime sahiptir. Amacımız, işbirliği içerisinde büyüyerek daha iyi projeler sunmak ve sektörde 
+        fark yaratmaktır. İhtiyaçlarınıza özel çözümler sunarak, işlerinizi daha iyi hale getirmek için her zaman yanınızdayız.
+      </p>
+    </div>
+  </section>
+
+  
+  <main>
+    <section class="about">
+      <h2>Ekip Üyelerimiz</h2>
+      <div class="team-grid">
+        <% team.forEach(member => { %>
+          <div class="team-card">
+            <img src="<%= member.imageUrl %>" alt="<%= member.name %>" />
+            <h4><%= member.name %></h4>
+            <p><%= member.role %></p>
+            <p><%= member.bio %></p>
+            <div class="social-media">
+              <% if (member.kick) { %>
+                <a href="<%= member.kick %>" target="_blank" class="social-link"><i class="fab fa-kickstarter-k"></i></a>
+              <% } %>
+              <% if (member.twitter) { %>
+                <a href="<%= member.twitter %>" target="_blank" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+              <% } %>
+              <% if (member.instagram) { %>
+                <a href="<%= member.instagram %>" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+              <% } %>
+              <% if (member.linkedin) { %>
+                <a href="<%= member.linkedin %>" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+              <% } %>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+
+    <section class="home-blog-section">
+      <h2>Son Blog Yazılarımız</h2>
+      <div class="home-blog-grid">
+        <% blogs.forEach(blog => { %>
+          <div class="home-blog-card">
+            <h3><%= blog.title.substring(0, 10) %>...</h3>
+            <p class="blog-snippet"><%= blog.content.substring(0, 100) %>...</p>
+            <p class="blog-author">Yazar: <%= blog.author %></p>
+            <p class="blog-date">Yayınlanma Tarihi: <%= new Intl.DateTimeFormat('tr-TR', { year:
+              'numeric', month: 'long', day: 'numeric' }).format(blog.createdAt)
+              %></p>
+            <a href="/blogs/<%= blog._id %>">Devamını Oku</a>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+  </main>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- FontAwesome -->
+  <%- include('partials/footer') %>
+</body>
+</html>

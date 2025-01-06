@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klip Yönetimi</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('../partials/adminHeader') %>
+  <main class="clip-management">
+    <h2>Klip Yönetimi</h2>
+  
+    <!-- Klip Ekleme Formu -->
+    <form action="/admin/clips" method="POST" enctype="multipart/form-data" class="add-clip-form">
+      <div class="form-group">
+        <input type="text" name="title" placeholder="Klip Başlığı" required>
+      </div>
+      <div class="form-group">
+        <input type="file" name="clip" accept="video/*" required>
+      </div>
+      <button type="submit" class="btn-primary">Klip Ekle</button>
+    </form>
+  
+    <!-- Tüm Klipler -->
+    <div class="clips-list">
+      <% clips.forEach(clip => { %>
+        <div class="clip-card">
+          <video controls>
+            <source src="<%= clip.filePath %>" type="video/mp4">
+            Tarayıcınız video oynatmayı desteklemiyor.
+          </video>
+          <h3><%= clip.title %></h3>
+  
+          <div class="clip-actions">
+            <!-- Klip Düzenleme Formu -->
+            <form action="/admin/clips/edit/<%= clip._id %>" method="POST" enctype="multipart/form-data" class="edit-clip-form">
+              <input type="text" name="title" value="<%= clip.title %>" placeholder="Başlık" required>
+              <input type="file" name="clip" accept="video/*">
+              <button type="submit" class="btn-edit">Düzenle</button>
+            </form>
+  
+            <!-- Klip Silme Formu -->
+            <form action="/admin/clips/delete/<%= clip._id %>" method="POST">
+              <button type="submit" class="btn-delete">Sil</button>
+            </form>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+</body>
+</html>

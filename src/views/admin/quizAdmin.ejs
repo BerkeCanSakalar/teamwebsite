@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Quiz Yönetimi</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .quiz-admin-main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2, h3 {
+      color: #4caf50;
+      margin-bottom: 1rem;
+    }
+
+    .add-quiz-form {
+      background: #1f1f1f;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: 0 auto;
+    }
+
+    .add-quiz-form input,
+    .add-quiz-form textarea,
+    .add-quiz-form button {
+      width: 80%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background: #2a2a2a;
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+    }
+
+    .add-quiz-form button {
+      width: 100%;
+  padding: 0.8rem;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+    }
+
+    .add-quiz-form button:hover {
+      background: #45a049;
+    }
+
+    .quiz-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .quiz-card {
+      background-color: #2a2a2a;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: left;
+      width: 100%;
+      max-width: 360px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .quiz-card:hover {
+      transform: scale(1.05);
+    }
+
+    .quiz-card p {
+      margin: 0.5rem 0;
+    }
+
+    .btn-delete {
+      background-color: #ff4d4d;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-delete:hover {
+      background-color: #e60000;
+    }
+
+    @media (max-width: 768px) {
+      .add-quiz-form {
+        padding: 10px;
+      }
+
+      .quiz-card {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .quiz-admin-main {
+        padding: 10px;
+      }
+
+      h2, h3 {
+        font-size: 1.5rem;
+      }
+
+      .add-quiz-form input,
+      .add-quiz-form textarea,
+      .add-quiz-form button {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <%- include('../partials/adminHeader') %>
+  <main class="quiz-admin-main">
+    <h2>Quiz Soruları Yönetimi</h2>
+    <form action="/admin/quiz/add" method="POST" class="add-quiz-form">
+      <input type="text" name="question" placeholder="Soru" required />
+      <textarea name="options" placeholder="Şıklar (virgülle ayırın)" rows="3" required></textarea>
+      <input type="text" name="correctAnswer" placeholder="Doğru Şık" required />
+      <button type="submit">Soru Ekle</button>
+    </form>
+
+    <h3>Mevcut Sorular</h3>
+    <div class="quiz-list">
+      <% quizs.forEach(quiz => { %>
+        <div class="quiz-card">
+          <p><strong>Soru:</strong> <%= quiz.question %></p>
+          <p><strong>Şıklar:</strong> <%= quiz.options.join(', ') %></p>
+          <p><strong>Doğru Şık:</strong> <%= quiz.correctAnswer %></p>
+          <form action="/admin/quiz/delete/<%= quiz._id %>" method="POST">
+            <button type="submit" class="btn-delete">Sil</button>
+          </form>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+</body>
+</html>

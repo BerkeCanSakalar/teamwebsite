@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <main class="quiz-main">
+      <h2 class="quiz-title">Quiz Soruları</h2>
+      <div class="quiz-container">
+        <% quizs.forEach((quiz, index) => { %>
+          <div class="quiz-card" data-id="<%= index %>" data-answer="<%= quiz.correctAnswer %>">
+            <h3 class="quiz-question"><%= quiz.question %></h3>
+            <div class="quiz-options">
+              <% quiz.options.forEach(option => { %>
+                <button class="quiz-option-btn" data-value="<%= option %>" onclick="selectAnswer(this)">
+                  <%= option %>
+                </button>
+              <% }); %>
+            </div>
+          </div>
+        <% }); %>
+        <button class="btn-submit" onclick="checkAnswers()">Cevapları Kontrol Et</button>
+      </div>
+
+      <!-- Modal -->
+      <div id="result-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <h3>Sonuçlarınız</h3>
+          <p id="result-message"></p>
+          <div id="detailed-results"></div>
+          <button class="btn-try-again" onclick="location.reload()">Tekrar Dene</button>
+        </div>
+      </div>
+    </main>
+    <%- include('partials/footer') %>
+    <script>
+      let selectedAnswers = {};
+
+      function selectAnswer(button) {
+        const questionId = button.closest('.quiz-card').getAttribute('data-id'); 
+        const allOptions = button.closest('.quiz-options').querySelectorAll('.quiz-option-btn');
+        
+        allOptions.forEach((btn) => {
+          btn.style.backgroundColor = '#333';
+        });
+        
+        button.style.backgroundColor = '#4caf50';
+        selectedAnswers[questionId] = button.getAttribute('data-value');
+      }
+
+      function checkAnswers() {
+        const quizCards = document.querySelectorAll('.quiz-card');
+        let correctCount = 0;
+        let totalQuestions = quizCards.length;
+        let detailedResults = "";
+
+        quizCards.forEach((card, index) => {
+          const questionText = card.querySelector('.quiz-question').innerText;
+          const correctAnswer = card.getAttribute('data-answer');
+          const questionId = card.getAttribute('data-id');
+          const selectedAnswer = selectedAnswers[questionId];
+
+          if (selectedAnswer === correctAnswer) {
+            correctCount++;
+            detailedResults += `
+              <div class="result-item">
+                <p><strong>${index + 1}. Soru:</strong> ${questionText}</p>
+                <p>Seçilen Cevap: <span class="correct-answer">${selectedAnswer}</span></p>
+                <p>Doğru Cevap: <span class="correct-answer">${correctAnswer}</span></p>
+              </div>
+            `;
+          } else {
+            detailedResults += `
+              <div class="result-item">
+                <p><strong>${index + 1}. Soru:</strong> ${questionText}</p>
+                <p>Seçilen Cevap: <span class="wrong-answer">${selectedAnswer || "Boş"}</span></p>
+                <p>Doğru Cevap: <span class="correct-answer">${correctAnswer}</span></p>
+              </div>
+            `;
+          }
+        });
+
+        if (Object.keys(selectedAnswers).length < totalQuestions) {
+          alert("Lütfen tüm soruları cevaplayın!");
+          return;
+        }
+
+        // Modal aç
+        const modal = document.getElementById('result-modal');
+        const resultMessage = document.getElementById('result-message');
+        const detailedResultsContainer = document.getElementById('detailed-results');
+        const closeButton = document.querySelector('.close-btn');
+
+        resultMessage.innerHTML = `Doğru Sayısı: <strong>${correctCount}</strong> / ${totalQuestions}`;
+        detailedResultsContainer.innerHTML = detailedResults;
+        modal.style.display = 'flex';
+
+        closeButton.addEventListener('click', () => {
+          modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

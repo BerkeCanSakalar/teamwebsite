@@ -1,0 +1,29 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+  <header class="adminnavbar">
+    <div class="logo">
+      <h1><a href="/admin/dashboard">Admin Paneli</a></h1>
+    </div>
+    <nav class="adminnav-links">
+      <a href="/admin/about">Ekip Yönetimi</a>
+      <a href="/admin/blogs">Blog Yönetimi</a>
+      <a href="/admin/clips">Clip Yönetimi</a>
+      <a href="/admin/quiz">Quiz Yönetimi</a>
+      <a href="/admin/chat">Canlı Chat</a>
+      <a href="/admin/contacts">Mesajlar</a>
+      <a href="/auth/logout" class="logout">Çıkış</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Menüyü Aç">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.adminnav-links');
+  
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      menuToggle.innerHTML = navLinks.classList.contains('show') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+  </script>

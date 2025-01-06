@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Paneli - Blog Yönetimi</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('../partials/adminHeader') %>
+  <main class="manage-blogs">
+    <h2>Blog Yazıları</h2>
+    <form action="/admin/blogs" method="POST" class="add-blog-form">
+      <div class="form-group">
+        <input type="text" name="title" placeholder="Başlık" required>
+      </div>
+      <div class="form-group">
+        <textarea name="content" placeholder="İçerik" rows="4" required></textarea>
+      </div>
+      <div class="form-group">
+        <input type="text" name="author" placeholder="Yazar" required>
+      </div>
+      <div class="form-group">
+        <input type="url" name="imageUrl" placeholder="Resim URL (isteğe bağlı)">
+      </div>
+      
+      <button type="submit" class="btn-primary">Ekle</button>
+    </form>
+
+    <div class="blogs-list">
+      <% blogs.forEach(blog => { %>
+        <div class="blog-card">
+          <div class="blog-info">
+            <h3><%= blog.title.substring(0, 30) %></h3>
+            <p><%= blog.content.substring(0, 30) %>...</p>
+            <p><small>Yazar: <%= blog.author %></small></p>
+            <p class="blog-date">Yayınlanma Tarihi: <%= new Intl.DateTimeFormat('tr-TR', { year:
+              'numeric', month: 'long', day: 'numeric' }).format(blog.createdAt)
+              %></p>
+          </div>
+          <div class="blog-actions">
+            <a href="/admin/blogs/edit/<%= blog._id %>" class="btn-edit">Düzenle</a>
+            <form action="/admin/blogs/delete/<%= blog._id %>" method="POST">
+              <button type="submit" class="btn-delete">Sil</button>
+            </form>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+</body>
+</html>

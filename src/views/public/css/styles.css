@@ -1,0 +1,1637 @@
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #121212; /* Dark tema arka plan rengi */
+  color: #ffffff; /* Yazı rengi */
+  display: flex;
+  flex-direction: column; /* Ana yapıyı sütun olarak düzenle */
+  min-height: 100vh; /* Minimum ekran yüksekliği */
+}
+main {
+  flex: 1; /* İçeriğin esneyerek alanı doldurmasını sağlar */
+  padding: 20px;
+}
+
+/* HAKKIMIZDA */
+
+/* About Bölümü */
+.about {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2rem;
+  color: #4caf50;
+  margin-bottom: 1.5rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 sütun oluşturur */
+  gap: 1rem;
+  justify-items: center;
+}
+
+.team-card {
+  background: #1f1f1f;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%; /* Card genişlikleri eşit */
+  max-width: 300px; /* Card'lar çok geniş olmasın */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.team-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 25%;
+  margin-bottom: 1rem;
+  border: 2px solid #4caf50;
+}
+
+.team-card h4 {
+  font-size: 1.25rem;
+  color: #4caf50;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.team-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  word-wrap: break-word; /* Taşmayı önler */
+}
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-link {
+  color: #4caf50;
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: #81c784;
+  text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr); /* Orta boyutlu cihazlarda 2 sütun */
+  }
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(1, 1fr); /* Küçük cihazlarda 1 sütun */
+  }
+}
+
+@media (max-width: 375px) {
+  .team-card {
+    width: 90%; /* Card genişlikleri eşit */
+  max-width: 200px; /* Card'lar çok geniş olmasın */
+  }
+}
+
+@media (max-width: 320px) {
+  .team-card {
+    width: 90%; /* Card genişlikleri eşit */
+  max-width: 200px; /* Card'lar çok geniş olmasın */
+  }
+}
+
+/* END HAKKIMIZDA */
+
+/* HEADER TASARIM RESPONSİVE */
+
+/* Genel header stili */
+.adminnavbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1f1f1f;
+  color: white;
+  position: relative;
+  z-index: 10;
+}
+
+.logo a {
+  text-decoration: none;
+  color: #4caf50;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 15;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #dcdcdc;
+  font-size: 1.2rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+  color: #4caf50;
+}
+
+/* Hamburger menü stili */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+    background-color: #1f1f1f;
+    width: 100%;
+    height: 50vh;
+    border-radius: 0 0 12px 12px;
+    animation: slideDown 0.5s ease forwards;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+  .adminnav-links {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+    background-color: #1f1f1f;
+    width: 100%;
+    height: 50vh;
+    border-radius: 0 0 12px 12px;
+    animation: slideDown 0.5s ease forwards;
+    gap: 2rem;
+  }
+
+  .adminnav-links.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Yukarıdan aşağıya kayma animasyonu */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+
+/* END HEADER TASARIM RESPONSİVE */
+  
+/* FOOTER */
+
+footer {
+  background-color: #1f1f1f;
+  color: #cccccc;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.9rem;
+}
+
+/* END FOOTER */
+
+/* CONTACT */
+
+/* İletişim Formu */
+.contact-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.contact-section {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  background-color: #1f1f1f;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact-section h2 {
+  font-size: 2rem;
+  color: #4caf50;
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  margin-bottom: 20px;
+  color: #cccccc;
+}
+
+.contact-form .form-group {
+  margin-bottom: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 80%;
+  padding: 15px;
+  border: 1px solid #444;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+.contact-form .btn-submit {
+  width: 100%;
+  padding: 15px;
+  background-color: #4caf50;
+  color: #ffffff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form .btn-submit:hover {
+  background-color: #3e8e41;
+}
+
+/* END CONTACT */
+
+/* BLOG */
+
+.blog-main {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.blog-section h2 {
+  font-size: 2rem;
+  color: #4caf50;
+  margin-bottom: 1.5rem;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Varsayılan olarak 3 sütun */
+  gap: 1rem;
+  justify-items: center;
+}
+
+.blog-card {
+  background: #1f1f1f;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 300px; /* Kart genişliği sabitlendi */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.blog-card h3 {
+  font-size: 1.25rem;
+  color: #4caf50;
+  margin-bottom: 0.5rem;
+  white-space: normal;
+  word-wrap: break-word; /* Başlık taşmalarını önler */
+}
+
+.blog-card .blog-snippet {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  word-wrap: break-word; /* İçerik taşmalarını önler */
+}
+
+.blog-card .blog-author {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-bottom: 0.8rem;
+}
+
+.blog-card .btn-read-more {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #4caf50;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.blog-card .btn-read-more:hover {
+  background: #45a049;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 1024px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr); /* Orta cihazlarda 2 sütun */
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: repeat(1, 1fr); /* Küçük cihazlarda 1 sütun */
+  }
+}
+
+@media (max-width: 375px) {
+  .blog-card {
+    width: 90%;
+  max-width: 200px; /* Kart genişliklerini sınırla */
+  }
+}
+
+@media (max-width: 320px) {
+  .blog-card {
+    width: 90%;
+  max-width: 200px; /* Kart genişliklerini sınırla */
+  }
+}
+
+/* Ana Sayfa Blog Bölümü */
+.home-blog-section {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.home-blog-section h2 {
+  font-size: 2rem;
+  color: #4caf50;
+  margin-bottom: 1.5rem;
+}
+
+.home-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Varsayılan 3 sütun */
+  gap: 1rem;
+  justify-items: center;
+}
+
+.home-blog-card {
+  background: #1f1f1f;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 300px; /* Kart genişliklerini sınırla */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.home-blog-card h3 {
+  font-size: 1.25rem;
+  color: #4caf50;
+  margin-bottom: 0.5rem;
+  white-space: normal;
+  word-wrap: break-word; /* Uzun başlıklar için taşmayı önle */
+}
+
+.home-blog-card .blog-snippet {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  word-wrap: break-word; /* Uzun içerik için taşmayı önle */
+}
+
+.home-blog-card .blog-author {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-bottom: 0.8rem;
+}
+
+.home-blog-card a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #4caf50;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.home-blog-card a:hover {
+  background: #45a049;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 1024px) {
+  .home-blog-grid {
+    grid-template-columns: repeat(2, 1fr); /* 1024px altında 2 sütun */
+  }
+}
+
+@media (max-width: 768px) {
+  .home-blog-grid {
+    grid-template-columns: repeat(1, 1fr); /* 768px altında 1 sütun */
+  }
+}
+
+@media (max-width: 375px) {
+  .home-blog-card {
+    width: 90%;
+  max-width: 200px; /* Kart genişliklerini sınırla */
+  }
+}
+
+@media (max-width: 320px) {
+  .home-blog-card {
+    width: 90%;
+  max-width: 200px; /* Kart genişliklerini sınırla */
+  }
+}
+
+/* END BLOG */
+
+/* DASHBOARD */
+.dashboard {
+  flex: 1;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.dashboard h2 {
+  font-size: 2.5rem;
+  color: #4caf50;
+  margin-bottom: 30px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.dashboard-card {
+  background-color: #1f1f1f;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #4caf50;
+}
+
+.dashboard-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #3e8e41;
+}
+
+@media (max-width: 320px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* END DASHBOARD */
+
+/* ADMİN NAVBAR */
+
+.adminnavbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #1f1f1f;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.adminnavbar h1 {
+  font-size: 1.8rem;
+  color: #4caf50;
+}
+.adminnavbar h1 a {
+  font-size: 1.8rem;
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.adminnav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+}
+
+.adminnav-links a:hover {
+  color: #4caf50;
+}
+
+/* END ADMİN NAVBAR */
+
+/* ADMİN EKİP ÜYELERİ */
+
+/* Manage About Section */
+.manage-about {
+  flex: 1;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.manage-about h2 {
+  font-size: 2.5rem;
+  color: #4caf50;
+  margin-bottom: 30px;
+}
+
+.add-member-form {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  background-color: #1f1f1f;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.add-member-form .form-group {
+  margin-bottom: 15px;
+}
+
+.add-member-form input,
+.add-member-form textarea {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #444;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.add-member-form input:focus,
+.add-member-form textarea:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: #ffffff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #3e8e41;
+}
+
+/* Üye Kartları */
+.members-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Varsayılan 3 sütun */
+  gap: 1rem;
+  justify-items: center;
+}
+
+.member-card {
+  background: #1f1f1f;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 300px; /* Kart genişliklerini sınırlar */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.member-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 25%;
+  margin-bottom: 1rem;
+  border: 2px solid #4caf50; /* Yeşil kenarlık */
+}
+
+.member-card h3 {
+  font-size: 1.25rem;
+  color: #4caf50;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.member-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  word-wrap: break-word; /* Uzun metinlerde taşmayı önler */
+}
+
+.member-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.member-actions .btn-edit,
+.member-actions .btn-delete {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.member-actions .btn-edit {
+  background: #007bff;
+}
+
+.member-actions .btn-edit:hover {
+  background: #0056b3;
+}
+
+.member-actions .btn-delete {
+  background: #dc3545;
+}
+
+.member-actions .btn-delete:hover {
+  background: #a71d2a;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 1024px) {
+  .members-list {
+    grid-template-columns: repeat(2, 1fr); /* 1024px altında 2 sütun */
+  }
+}
+
+@media (max-width: 768px) {
+  .members-list {
+    grid-template-columns: repeat(2, 1fr); /* 768px altında 1 sütun */
+  }
+  .member-card {
+    background: #1f1f1f;
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 300px; /* Kart genişliklerini sınırlar */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (max-width: 425px) {
+  .member-card {
+    background: #1f1f1f;
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 300px; /* Kart genişliklerini sınırlar */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  .members-list {
+    grid-template-columns: repeat(1, 1fr); /* 768px altında 1 sütun */
+  }
+}
+
+@media (max-width: 375px) {
+  .member-card {
+    width: 90%;
+    max-width: 200px; /* Kart genişliklerini sınırlar */
+  }
+}
+
+@media (max-width: 320px) {
+  .member-card {
+    width: 90%;
+    max-width: 200px; /* Kart genişliklerini sınırlar */
+  }
+}
+
+/* END ADMİN EKİP ÜYELERİ */
+
+/* ADMİN BLOG SAYFASI */
+
+/* Manage Blogs Section */
+.manage-blogs {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.manage-blogs h2 {
+  font-size: 2rem;
+  color: #4caf50;
+  margin-bottom: 1.5rem;
+}
+
+.add-blog-form {
+  background: #1f1f1f;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-blog-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.add-blog-form input,
+.add-blog-form textarea {
+  width: 80%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background: #2a2a2a;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.add-blog-form button {
+  width: 100%;
+  padding: 0.8rem;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.add-blog-form button:hover {
+  background: #45a049;
+}
+
+.blogs-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Varsayılan 3 sütun */
+  gap: 1rem;
+  justify-items: center;
+}
+
+.blog-card {
+  background: #1f1f1f;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 300px; /* Blog genişliklerini sınırla */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.blog-info h3 {
+  font-size: 1.25rem;
+  color: #4caf50;
+  margin-bottom: 0.5rem;
+  white-space: normal;
+  word-wrap: break-word; /* Uzun başlıklar için taşmayı önle */
+}
+
+.blog-info p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  word-wrap: break-word; /* Uzun içerik için taşmayı önle */
+}
+
+.blog-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.blog-actions .btn-edit,
+.blog-actions .btn-delete {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.blog-actions .btn-edit {
+  background: #007bff;
+}
+
+.blog-actions .btn-edit:hover {
+  background: #0056b3;
+}
+
+.blog-actions .btn-delete {
+  background: #dc3545;
+}
+
+.blog-actions .btn-delete:hover {
+  background: #a71d2a;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 1024px) {
+  .blogs-list {
+    grid-template-columns: repeat(2, 1fr); /* 1024px altında 2 sütun */
+  }
+}
+
+@media (max-width: 768px) {
+  .blogs-list {
+    grid-template-columns: repeat(1, 1fr); /* 768px altında 1 sütun */
+  }
+  .blog-card {
+    background: #1f1f1f;
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 300px; /* Blog genişliklerini sınırla */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+@media (max-width: 425px) {
+  .blog-card {
+    width: 80%;
+    max-width: 300px; /* Blog genişliklerini sınırla */
+  }
+}
+@media (max-width: 375px) {
+  .blog-card {
+    width: 70%;
+    max-width: 300px; /* Blog genişliklerini sınırla */
+  }
+}
+@media (max-width: 320px) {
+  .blog-card {
+    width: 50%;
+    max-width: 200px; /* Blog genişliklerini sınırla */
+  }
+}
+
+/* END ADMİN BLOG SAYFASI */
+
+/* ADMİN MESAJLAR SAYFASI */
+
+/* Mesajlar Bölümü */
+.manage-messages {
+  flex: 1;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.manage-messages h2 {
+  font-size: 2.5rem;
+  color: #4caf50;
+  margin-bottom: 30px;
+}
+
+.table-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+.message-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1f1f1f;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.message-table th,
+.message-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #444;
+}
+
+.message-table th {
+  background-color: #2c2c2c;
+  color: #ffffff;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.message-table td {
+  color: #cccccc;
+}
+
+.message-table tr:hover {
+  background-color: #2a2a2a;
+}
+
+.status-read {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.status-unread {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.btn-delete {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+  background-color: #3e8e41;
+}
+
+/* END ADMİN MESAJLAR SAYFASI */
+
+/* ADMİN GİRİŞ SAYFASI */
+
+/* Login Container */
+
+.login-page {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.login-box {
+  background-color: #1f1f1f;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-box h2 {
+  color: #4caf50;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+/* Form */
+form .adminform-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+form .adminform-group label {
+  font-size: 0.9rem;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 5px;
+}
+
+form .adminform-group input {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #444;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+form .adminform-group input:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+.adminbtn-primary {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: #ffffff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.adminbtn-primary:hover {
+  background-color: #3e8e41;
+}
+
+/* END ADMİN GİRİŞ SAYFASI */
+
+/* BLOG DETAİL */
+
+/* Blog Detail Styles */
+.blog-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+  background-color: #1f1f1f; /* Dark tema arka planı */
+}
+
+.blog-content {
+  max-width: 800px;
+  width: 100%;
+  background: #2b2b2b;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #eaeaea;
+  text-align: center;
+  overflow-wrap: break-word; /* Taşmaları önler */
+}
+
+.blog-title {
+  font-size: 2.5rem;
+  color: #4caf50;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+}
+
+.blog-author {
+  font-size: 1rem;
+  color: #a3a3a3;
+  margin-bottom: 1rem;
+}
+
+.blog-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: #ddd;
+}
+
+.blog-meta {
+  text-align: right;
+  font-size: 0.9rem;
+  color: #a3a3a3;
+  margin-top: 1.5rem;
+}
+
+.btn-back {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #4caf50;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: #388e3c;
+}
+.blog-image {
+  display: block;
+  max-width: 100%;
+  height: 400px;
+  margin: 1rem auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .blog-title {
+    font-size: 2rem;
+  }
+
+  .blog-text p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-content {
+    padding: 1.5rem;
+  }
+
+  .blog-title {
+    font-size: 1.8rem;
+  }
+
+  .btn-back {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* END BLOG DETAIL */
+
+/* ADMİN CLİP DETAIL */
+.clip-management {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.clip-management h2 {
+  font-size: 2rem;
+  color: #4caf50;
+  margin-bottom: 1.5rem;
+}
+
+/* Klip Ekleme Formu */
+.add-clip-form {
+  background: #1f1f1f;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.add-clip-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.add-clip-form input {
+  width: 80%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background: #2a2a2a;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.add-clip-form button {
+  width: 100%;
+  padding: 0.8rem;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.add-clip-form button:hover {
+  background: #45a049;
+}
+
+/* Klip Kartları */
+.clips-list {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-items: center;
+}
+
+.clip-card {
+  background: #1f1f1f;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.clip-card video {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.clip-card h3 {
+  font-size: 1.25rem;
+  color: #4caf50;
+  margin-bottom: 1rem;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.clip-actions {
+  display: flex;
+  flex-direction: column; /* Formlar dikey olarak sıralanır */
+  gap: 1rem;
+}
+
+.clip-actions form {
+  display: flex;
+  flex-direction: column; /* Girdi kutuları ve butonlar dikey hizalanır */
+  gap: 0.5rem;
+}
+
+.clip-actions input[type="text"],
+.clip-actions input[type="file"] {
+  width: 80%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background: #2a2a2a;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.clip-actions .btn-edit {
+  background: #007bff;
+}
+
+.clip-actions .btn-edit:hover {
+  background: #0056b3;
+}
+
+.clip-actions .btn-delete {
+  background: #dc3545;
+}
+
+.clip-actions .btn-delete:hover {
+  background: #a71d2a;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .clips-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .clips-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (max-width: 320px) {
+  .clip-card {
+    width: 90%;
+    max-width: 200px;
+}
+}
+/* END ADMİN CLİP DETAIL */
+
+/* CLİP DETAİL */
+
+.all-clips-section {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.all-clips-section h2 {
+  font-size: 2rem;
+  color: #4caf50;
+  margin-bottom: 1.5rem;
+}
+
+.all-clips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 sütun */
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.all-clip-card {
+  background: #1f1f1f;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 500px; /* Maksimum genişlik */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.all-clip-card video {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.all-clip-card h3 {
+  font-size: 1.25rem;
+  color: #4caf50;
+  margin-bottom: 0.5rem;
+  white-space: normal;
+  word-wrap: break-word; /* Taşmayı engelle */
+}
+
+/* Responsive Tasarım */
+@media (max-width: 1024px) {
+  .all-clips-grid {
+    grid-template-columns: repeat(2, 1fr); /* 1024px altında 2 sütun */
+  }
+  .all-clip-card {
+    width: 100%;
+    max-width: 400px; /* Maksimum genişlik */
+  }
+}
+
+@media (max-width: 768px) {
+  .all-clips-grid {
+    grid-template-columns: 1fr; /* 768px altında 1 sütun */
+  }
+  .all-clip-card {
+    width: 100%;
+    max-width: 650px; /* Maksimum genişlik */
+  }
+}
+
+@media (max-width: 425px) {
+  .all-clip-card {
+    width: 100%;
+    max-width: 350px; /* Maksimum genişlik */
+  }
+}
+
+@media (max-width: 375px) {
+  .all-clip-card {
+    width: 100%;
+    max-width: 300px; /* Maksimum genişlik */
+  }
+}
+
+@media (max-width: 320px) {
+  .all-clip-card {
+    width: 90%;
+    max-width: 250px;
+}
+}
+
+/* END CLİP DETAİL */
+
+/* ABOUT DESC DETAİL */
+
+.about-section {
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: #1f1f1f;
+  color: white;
+  border-radius: 12px;
+  margin: 1.5rem auto;
+  max-width: 900px;
+}
+
+.about-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #4caf50;
+}
+
+.about-section .about-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #dcdcdc;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    margin: 1.5rem 1.5rem;
+  }
+  .about-section h1 {
+    font-size: 2rem;
+  }
+  .about-section .about-description {
+    font-size: 1rem;
+  }
+}
+
+/* END ABOUT DESC DETAİL */
+
+/* CONTACT ALERT */
+
+.alert {
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* END CONTACT ALERT */
+
+/* QUİZ PAGE */
+
+.quiz-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #4caf50;
+}
+
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 800px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.quiz-card {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.quiz-question {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quiz-option-btn {
+  background-color: #333;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quiz-option-btn:hover {
+  background-color: #4caf50;
+}
+
+.btn-submit {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-submit:hover {
+  background-color: #45a049;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 500px;
+  width: 80%;
+}
+
+.close-btn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: red;
+}
+
+.btn-try-again {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-try-again:hover {
+  background-color: #45a049;
+}
+.result-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #444;
+}
+.correct-answer {
+  color: #4caf50;
+  font-weight: bold;
+}
+.wrong-answer {
+  color: #ff4d4d;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quiz-card {
+    padding: 15px;
+  }
+
+  .quiz-question {
+    font-size: 1.2rem;
+  }
+
+  .quiz-option-btn {
+    font-size: 0.9rem;
+  }
+}
+
+/* END QUIZ PAGE */

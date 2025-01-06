@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Paneli - Mesajlar</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('../partials/adminHeader') %>
+  <main class="manage-messages">
+    <h2>Gelen Mesajlar</h2>
+    <div class="table-container">
+      <table class="message-table">
+        <thead>
+          <tr>
+            <th>Ad</th>
+            <th>Email</th>
+            <th>Mesaj</th>
+            <th>Tarih</th>
+            <th>Durum</th>
+            <th>İşlem</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% contacts.forEach(contact => { %>
+            <tr>
+              <td><%= contact.name %></td>
+              <td><%= contact.email %></td>
+              <td><%= contact.message %></td>
+              <td><%= new Intl.DateTimeFormat('tr-TR', { year:
+                'numeric', month: 'long', day: 'numeric' }).format(contact.createdAt)
+                %></td>
+              <td>
+                <% if (contact.isRead) { %>
+                  <span class="status-read">Okundu</span>
+                <% } else { %>
+                  <span class="status-unread">Okunmamış</span>
+                <% } %>
+              </td>
+              <td>
+                <% if (!contact.isRead) { %>
+                  <form action="/admin/messages/<%= contact._id %>/mark-read" method="POST">
+                    <button type="submit" class="btn-delete">Oku</button>
+                  </form>
+                <% } %>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>

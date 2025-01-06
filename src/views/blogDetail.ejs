@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= blog.title %> - Ekip Portföy</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+  <main class="blog-detail">
+    <article class="blog-content">
+      <h1 class="blog-title"><%= blog.title %></h1>
+      <% if (blog.imageUrl) { %>
+        <img src="<%= blog.imageUrl %>" alt="<%= blog.title %> resmi" class="blog-image">
+      <% } %>
+      <div class="blog-text">
+        <p><%= blog.content %></p>
+      </div>
+      <p class="blog-meta">Yazar: <%= blog.author %></p>
+      <div class="blog-meta">
+        <p>Yayınlanma Tarihi: <%= new Intl.DateTimeFormat('tr-TR', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }).format(blog.createdAt) %></p>
+      </div>
+      <a href="/blogs" class="btn-back">Geri Dön</a>
+    </article>
+  </main>
+  <%- include('partials/footer') %>
+</body>
+</html>
