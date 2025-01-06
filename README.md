@@ -26,7 +26,7 @@ MongoDB (Yerel veya Bulut Bağlantısı - MongoDB Atlas)
 Gerekli Paketlerin Yüklenmesi
 Tüm bağımlılıkları yüklemek için:
 
-npm install
+"npm install"
 
 
 
@@ -43,14 +43,14 @@ SESSION_SECRET="Your Secret Key"
 
 
 çalıştımak için bu komutu terminale yapıştıırn
-npm install --save-dev nodemon
+"npm install --save-dev nodemon"
 
 
 
 
 Çalıştırma
 Projenizi aşağıdaki komutla başlatabilirsiniz:
-npm run dev
+"npm run dev"
 
 
 
